@@ -12,9 +12,9 @@ app.use(cors());
 // initDB.init().then(() => {
 //     console.log('DB connected!');
 // })
-var distDir = __dirname + "/dist/";
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(distDir));
+app.use(express.static(__dirname + '/dist/public'));
+app.get('/*', function(req,res) {res.sendFile(path.join(__dirname+'/dist/public/index.html'));
+});
 
 // app.use('/api', router);
 
@@ -27,8 +27,8 @@ res.send('Hello World!');
 const port = process.env.PORT || 3000;
 
 
-// app.use('/api', require('./server/routes/system-users-routes'))
-// app.use('/api', require('./server/routes/users-routes'))
+app.use('/api', require('./server/routes/system-users-routes'))
+app.use('/api', require('./server/routes/users-routes'))
 
 // const users = require('./server/routes/system-users-routes');
 // const usersProfile = require('./server/routes/users-routes');

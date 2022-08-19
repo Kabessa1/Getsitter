@@ -1,0 +1,60 @@
+<form [formGroup]="registerForm" class="form">
+    <!-- <input type="text" formControlName="name" placeholder="Enter your Name"> -->
+    <!-- <input type="text" formControlName="lastName" placeholder="Enter your Last name"> -->
+    <!-- <input type="text" formControlName="mail" placeholder="Enter your Mail"> -->
+        <!-- <input type="text" formControlName="password" placeholder="Enter your Password"> -->
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your Name</mat-label>
+      <input matInput formControlName="firstName">
+      <mat-error *ngIf="name.invalid">Name isn't valid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your Last name</mat-label>
+      <input matInput formControlName="lastName">
+      <mat-error *ngIf="lastName.invalid">lastName isn't valid</mat-error>
+    </mat-form-field>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput formControlName="mail">
+        <mat-error *ngIf="mail.invalid">Mail isn't valid</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$">
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="registerForm.value.password">Password must be a combination of lower-case, upper-case, numbers and at least 9 characters long</mat-error>
+      </mat-form-field> 
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput formControlName="confirmPassword" [type]="hide ? 'password' : 'text'" required pattern="{{registerForm.value.password}}">
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="registerForm.value.verifyPassword">Passwords do not match.</mat-error>
+      </mat-form-field>
+     <button type="submit" (click)="register()">Submit</button>
+</form>
+
+  <!-- <mat-radio-group aria-label="Select a gender">
+    <mat-label>Select a gender</mat-label>
+    <mat-radio-button value="1">Woman</mat-radio-button>
+    <mat-radio-button value="2">Man</mat-radio-button>
+  </mat-radio-group> -->
+
+<!-- new -->
+<!-- mail -->
+<!-- <div class="example-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your mail</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+</div>
+//password-->
+

@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <div class="toolbar-left">
+      <i class="material-icons">wc</i>
+        <span>GetSitter!</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        </button>
+      </div>
+
+      <div class="toolbar-middle">
+          <button mat-raised-button color="basic"(click)="goTo('user-profile')">User-profile</button>
+      </div>
+    
+      <div class="toolbar-right">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+         <button mat-raised-button color="primary"(click)="goTopage('register')">Register</button>
+        </mat-menu>
+      </div>
+</mat-toolbar>

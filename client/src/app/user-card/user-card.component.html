@@ -1,0 +1,90 @@
+<div class="container" *ngIf="profile">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="my-profile">
+        <div class="picture">
+          <img class="img-fluid" src="{{profile.ImgUrl}}">
+        </div>
+        <div class="content">
+          <h3 class="name">{{profile.Firstname}}</h3>
+          <h4 class="lastname">{{profile.Lastname}}</h4>
+        </div>
+        <div class="description"> 
+          <h5 class="age" aria-hidden="true">Age:{{profile.Age}}</h5>
+          <p class="about" aria-hidden="true">hi my name is yuval</p>
+          </div>
+       
+        <!-- <ul class="social">
+          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
+          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
+          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
+        </ul> -->
+      </div>
+    </div>
+  </div>
+    </div>
+       
+
+
+<!-- --------------------------------------------------------------------------------------- -->
+<!-- <div *ngFor="let userCard of userCards">
+    
+    <div class="userCard">
+        <div class="userCard-header">
+          <div class="userCard-img">
+              <img
+                [src]="userCard.image"
+                alt="babysitter1"
+              />
+            </div>
+          <div class="user-name">
+              <label>name: {{userCard.first}}</label>
+              <label>lastName: {{userCard.last}}</label>
+          </div>
+          <label class="user-age">{{userCard.age}}</label>
+        </div>
+    
+        <div class="userCard-about">
+          <p>{{userCard.about}}</p>
+        </div>
+      </div>
+</div> -->
+
+<!-- without grid -->
+<!-- <div class="userCard">
+  <div class="userCard-header">
+    <div class="userCard-img">
+        <img
+          src="https://thumbs.dreamstime.com/z/pretty-sexy-young-woman-girl-long-blonde-hair-white-blouse-stars-cute-smiling-face-sunny-summer-day-blonde-137965198.jpg"
+          alt="babysitter1"
+        />
+      </div>
+    <div class="user-name">
+        <label>name:noa</label>
+        <label>lastName:kabessa</label>
+    </div>
+  </div>
+ 
+  <div class="userCard-about">
+    <p>blablablabalbalablablabalbalbalkbaklablablabalba</p>
+  </div>
+</div> -->
+<!-- <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card> -->

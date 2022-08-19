@@ -1,0 +1,19 @@
+<form [formGroup]="loginForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput formControlName="mail">
+        <mat-error *ngIf="mail.invalid">Mail isn't valid</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$">
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.invalid">Password isn't valid</mat-error>
+      </mat-form-field>
+    <button type="submit" (click)="login()" [disabled]="loginForm.invalid">Submit</button> 
+    </form>
+   
+
+      

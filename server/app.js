@@ -8,10 +8,14 @@ var router = express.Router();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(cors());
+app.use(cors());
 // initDB.init().then(() => {
 //     console.log('DB connected!');
 // })
+var distDir = __dirname + "/dist/";
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(distDir));
+
 app.use('/api', router);
 
 app.get('/', function(req, res) {

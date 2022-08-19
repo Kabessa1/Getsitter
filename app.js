@@ -1,4 +1,4 @@
-const initDB = require('./DB/init-DB');
+const initDB = require('./server/DB/init-DB');
 var express = require('express');
 const bodyParser = require("body-parser");
 // var cors = require('cors');
@@ -24,11 +24,11 @@ res.send('Hello World!');
 
 });
 
-app.use('/api', require('./routes/system-users-routes'))
-app.use('/api', require('./routes/users-routes'))
+app.use('/api', require('./server/routes/system-users-routes'))
+app.use('/api', require('./server/routes/users-routes'))
 
-const users = require('./routes/system-users-routes');
-const usersProfile = require('./routes/users-routes');
+const users = require('./server/routes/system-users-routes');
+const usersProfile = require('./server/routes/users-routes');
 
 //=========================
 

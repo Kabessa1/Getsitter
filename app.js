@@ -1,7 +1,7 @@
 const initDB = require('./server/DB/init-DB');
 var express = require('express');
 const bodyParser = require("body-parser");
-// var cors = require('cors');
+var cors = require('cors');
 var path = require('path');
 var app = express();
 var router = express.Router();

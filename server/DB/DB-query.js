@@ -114,12 +114,12 @@ async function loginUser(req, res) {
         // let userProfile = await pool.request()
         // .input('Email_p',sql.VarChar, mail)
         // .query("SELECT * from SystemUsers WHERE Email = @Email_p");
-        myDB.client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+        myDB.client.query('SELECT * FROM system_users;', (err, res) => {
             if (err) throw err;
             for (let row of res.rows) {
               console.log(JSON.stringify(row));
             }
-            client.end();
+            myDB.client.end();
           });
         console.log(userProfile);
         const user = userProfile.recordsets[0][0];

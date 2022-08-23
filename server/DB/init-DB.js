@@ -1,4 +1,5 @@
 const sql = require('mssql');
+const { Client } = require('pg');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -19,15 +20,24 @@ const sqlConfig = {
       trustServerCertificate: true // change to true for local dev / self-signed certs
     }
   }
+
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  });
+  
+  client.connect();
   
 var mysqlServer;
 async function init() {
 
-    try {
-        mysqlServer = await sql.connect(sqlConfig);
-       } catch (err) {
-        console.log(err);
-       }
+    // try {
+    //     mysqlServer = await sql.connect(sqlConfig);
+    //    } catch (err) {
+    //     console.log(err);
+    //    }
 };
 
-module.exports = {init: init, mysqlServer: mysqlServer, sqlConfig: sqlConfig};
+module.exports = {init: init, mysqlServer: mysqlServer, sqlConfig: sqlConfig, client:client};

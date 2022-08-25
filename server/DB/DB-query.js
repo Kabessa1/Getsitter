@@ -92,14 +92,14 @@ async function createUser(req, res) {
         myDB.client.query(
           `INSERT INTO system_users (Firstname, Lastname, Email, UserPassword) VALUES ($1,$2,$3,$4);`,
           [user.firstname, user.lastname, user.mail, user.password],
-          (err) => {
+          async (err) => {
             if (err) {
               console.error(err);
               return res.status(500).json({
                 error: "Database error",
               });
             } else {
-                const a = await myDB.client.query(
+                await myDB.client.query(
                     `INSERT INTO users (Firstname, Lastname, Email) VALUES ($1,$2,$3);`,
                     [user.firstname, user.lastname, user.mail])
               return res

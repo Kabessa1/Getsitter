@@ -79,7 +79,7 @@ async function createUser(req, res) {
     } else {
       bcrypt.hash(password, 10, (err, hash) => {
         if (err)
-          res.status(err).json({
+          return res.status(err).json({
             error: "Server error",
           });
         const user = {
@@ -97,33 +97,22 @@ async function createUser(req, res) {
           [user.firstname, user.lastname, user.mail, user.password],
           (err) => {
             if (err) {
-              flag = 0; //If user is not inserted is not inserted to database assigning flag as 0/false.
               console.error(err);
               return res.status(500).json({
                 error: "Database error",
               });
             } else {
-              flag = 1;
-              res
+              return res
                 .status(200)
                 .send({ message: "User added to database, not verified" });
             }
           }
         );
-        if (flag) {
-          const token = jwt.sign(
-            //Signing a jwt token
-            {
-              email: user.email,
-            },
-            process.env.SECRET_KEY
-          );
-        }
       });
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({
+    return res.status(500).json({
       error: "Database error while registring user!", //Database connection error
     });
   }

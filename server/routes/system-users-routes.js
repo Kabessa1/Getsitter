@@ -29,15 +29,7 @@ router.get("/user/:id", async (req, res) => {
 
 // post user
 router.post("/register", (req, res) => {
-  console.log(req.body);
-  dbQuery.createUser(req.body).then((err, result) => {
-    if (err) {
-      console.log(err);
-    }
-
-    console.log("1 record inserted");
-    res.send("1 record inserted");
-    });
+  return dbQuery.createUser(req, res);
 });
 
 

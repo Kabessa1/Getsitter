@@ -64,7 +64,7 @@ async function DeleteUserById(id) {
   }
 }
 
-async function createUser(user) {
+async function createUser(req, res) {
   try {
     const { firstname, lastname, mail, password } = req.body;
     const data = await myDB.client.query(

@@ -68,7 +68,7 @@ async function createUser(req, res) {
   try {
     const { firstname, lastname, mail, password } = req.body;
     const data = await myDB.client.query(
-      `SELECT * FROM users WHERE email= $1;`,
+      `SELECT * FROM system_users WHERE email= $1;`,
       [mail]
     ); //Checking if user already exists
     const arr = data.rows;
@@ -93,7 +93,7 @@ async function createUser(req, res) {
         //Inserting data into the database
 
         myDB.client.query(
-          `INSERT INTO users (Firstname, Lastname, Email, UserPassword) VALUES ($1,$2,$3,$4);`,
+          `INSERT INTO system_users (Firstname, Lastname, Email, UserPassword) VALUES ($1,$2,$3,$4);`,
           [user.firstname, user.lastname, user.mail, user.password],
           (err) => {
             if (err) {

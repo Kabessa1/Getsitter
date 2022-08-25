@@ -122,7 +122,8 @@ async function loginUser(req, res) {
             myDB.client.end();
           });
         console.log(userProfile);
-        const user = userProfile.recordsets[0][0];
+        // const user = userProfile.recordsets[0][0];
+        const user = undefined;
         console.log(user);
         if (!user) {
             return res.status(404).send({ message: "User Not found." });

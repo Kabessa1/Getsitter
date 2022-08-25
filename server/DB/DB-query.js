@@ -100,7 +100,7 @@ async function UpdateUserById(id, user) {
 
 async function loginUser(req, res) {
     try {
-        const {mail, password } = req.body;
+        const { mail, password } = req.body;
         console.log(mail);
         console.log(password);
         // let pool = await sql.connect(myDB.sqlConfig);
@@ -114,16 +114,17 @@ async function loginUser(req, res) {
         // let userProfile = await pool.request()
         // .input('Email_p',sql.VarChar, mail)
         // .query("SELECT * from SystemUsers WHERE Email = @Email_p");
-        myDB.client.query(`SELECT * FROM system_users WHERE Email = ${mail};`, (err, res) => {
-            if (err) throw err;
-            for (let row of res.rows) {
-              console.log(JSON.stringify(row));
-            }
-            myDB.client.end();
-          });
-        console.log(userProfile);
+        const data = await myDB.client.query(`SELECT * FROM system_users WHERE Email= $1;`, [mail]) ;
+        // myDB.client.query(`SELECT * FROM system_users WHERE Email = ${mail};`, (err, res) => {
+        //     if (err) throw err;
+        //     for (let row of res.rows) {
+        //       console.log(JSON.stringify(row));
+        //     }
+        //     myDB.client.end();
+        //   });
+        // console.log(userProfile);
         // const user = userProfile.recordsets[0][0];
-        const user = undefined;
+        const user = data.rows[0];
         console.log(user);
         if (!user) {
             return res.status(404).send({ message: "User Not found." });

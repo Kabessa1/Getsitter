@@ -88,9 +88,6 @@ async function createUser(req, res) {
           mail,
           password: hash,
         };
-        var flag = 1; //Declaring a flag
-
-        //Inserting data into the database
 
         myDB.client.query(
           `INSERT INTO system_users (Firstname, Lastname, Email, UserPassword) VALUES ($1,$2,$3,$4);`,
@@ -102,9 +99,12 @@ async function createUser(req, res) {
                 error: "Database error",
               });
             } else {
+                const a = await myDB.client.query(
+                    `INSERT INTO users (Firstname, Lastname, Email) VALUES ($1,$2,$3);`,
+                    [user.firstname, user.lastname, user.mail])
               return res
                 .status(200)
-                .send({ message: "User added to database, not verified" });
+                .send({ message: "User added to database" });
             }
           }
         );
@@ -116,18 +116,6 @@ async function createUser(req, res) {
       error: "Database error while registring user!", //Database connection error
     });
   }
-  // try {
-  // let pool = await sql.connect(myDB.sqlConfig);
-  // let products = await pool.request()
-  // .input('Firstname_p', sql.VarChar, user.firstname)
-  // .input('Lastname_p', sql.VarChar, user.lastname)
-  // .input('Email_p', sql.VarChar, user.mail)
-  // .input('UserPassword_p', sql.VarChar, bcrypt.hashSync(user.password, 8))
-  // .query('INSERT INTO SystemUsers (Firstname, Lastname, Email, UserPassword) VALUES (@Firstname_p, @Lastname_p, @Email_p, @UserPassword_p)'); //run stored procedure that created by me
-  // return products.recordsets;
-  // } catch (error) {
-  //     console.log(error);
-  // }
 }
 
 async function UpdateUserById(id, user) {

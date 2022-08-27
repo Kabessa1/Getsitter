@@ -6,9 +6,10 @@ const config = require("../config/token");
 
 async function getAllUsers() {
   try {
-    let pool = await myDB.client.query(myDB.sqlConfig);
-    let users = await pool.request().query("SELECT * from system_users");
-    return users.recordsets[0];
+    let users = await myDB.client.query("SELECT * from system_users");
+    // let users = await pool.request().query("SELECT * from system_users");
+    console.log(users.data);
+    return users.data[0];
   } catch (error) {
     console.log(error);
   }
@@ -16,9 +17,9 @@ async function getAllUsers() {
 
 async function getAllUsersProfile() {
   try {
-    let pool = await myDB.client.query(myDB.sqlConfig);
-    let userProfile = await pool.request().query("SELECT * from users");
-    return userProfile.recordsets[0];
+    let userProfile = await myDB.client.query("SELECT * from users");
+    console.log(userProfile.data);
+    return userProfile.data[0];
   } catch (error) {
     console.log(error);
   }

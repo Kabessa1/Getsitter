@@ -35,29 +35,24 @@ router.post("/register", (req, res) => {
 
 // post user
 router.post("/login", async (req, res) => {
-  // const user = await dbQuery.loginUser(req.body.email, req.body.password);
-  // if (user.length === 0 || user === null || user === undefined) {
-  //   res.send("Login faild");
-  // } else {
-  //   res.send(user[0])
-  // }
-
   return await dbQuery.loginUser(req, res);
 });
   
 // delete user by id
-router.delete("/user/:id", async (req, res) => {
-  const user = await dbQuery.DeleteUserById(req.params.id);
-  res.send(user);
-});
+// router.delete("/user/:id", async (req, res) => {
+//   const user = await dbQuery.DeleteUserById(req.params.id);
+//   res.send(user);
+// });
+
 // update user by id
-router.put("/user/:id", async (req, res) => {
-  const user = await dbQuery.UpdateUserById(req.params.id, req.body);
-  if (user.length === 0 || user !== null || user !== undefined) {
-    res.send("User Updated");
-  } else {
-    res.send("Some error on the server or DB");
-  }
-});
+// router.put("/user/:id", async (req, res) => {
+//   // jwt
+//   const user = await dbQuery.UpdateUserById(req.params.id, req.body);
+//   if (user.length === 0 || user !== null || user !== undefined) {
+//     res.send("User Updated");
+//   } else {
+//     res.send("Some error on the server or DB");
+//   }
+// });
 
 module.exports = router;

@@ -5,6 +5,7 @@ const jwtauth = require('../jwtauth');
 
 // Get all users
 router.get("/users-profile", async (req, res) => {
+  // jwt
   const usersProfile = await dbQuery.getAllUsersProfile();
   res.send(usersProfile);
 });
@@ -28,6 +29,8 @@ router.get("/user-profile/:id", async (req, res) => {
 
 // update user by id
 router.put("/user-profile/:id", async (req, res) => {
+  // jwt
+
   const user = await dbQuery.UpdateUserProfileById(req.params.id, req.body);
   if (user.length === 0 || user !== null || user !== undefined) {
     res.send("User Updated");

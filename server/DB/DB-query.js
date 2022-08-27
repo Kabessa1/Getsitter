@@ -9,9 +9,8 @@ async function getAllUsers() {
     console.log("getAllUsers");
     let users = await myDB.client.query("SELECT * from system_users;");
     // let users = await pool.request().query("SELECT * from system_users");
-    console.log(users);
     console.log(users.rows);
-    return users.rows[0];
+    return users.rows;
   } catch (error) {
     console.log(error);
   }
@@ -21,7 +20,7 @@ async function getAllUsersProfile() {
   try {
     let userProfile = await myDB.client.query("SELECT * from users;");
     console.log(userProfile.rows);
-    return userProfile.rows[0];
+    return userProfile.rows;
   } catch (error) {
     console.log(error);
   }

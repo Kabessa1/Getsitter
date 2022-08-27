@@ -8,6 +8,9 @@ const jwtauth = require('../jwtauth');
 router.get("/users", async (req, res) => {
   jwtauth.verifyToken(req, res, async (req, res) => {
     const users = await dbQuery.getAll();
+    users.forEach(user => {
+      delete user.userpassword;
+    });
     res.send(users);
   });
 });

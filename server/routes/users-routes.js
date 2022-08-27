@@ -5,19 +5,17 @@ const jwtauth = require('../jwtauth');
 
 // Get all users
 router.get("/users-profile", async (req, res) => {
-
   jwtauth.verifyToken(req, res, async (req, res) => {
     const usersProfile = await dbQuery.getAllUsersProfile();
 
-    if (user.length === 0) {
+    if (usersProfile.length === 0) {
     res.send("No users found");
-    } else if (user !== null && user !== undefined) {
+    } else if (usersProfile !== null && usersProfile !== undefined) {
     res.send(usersProfile);
     } else {
     res.send("Some error on the server or DB");
     }
   });
-  
 });
 
 // Get user by id

@@ -6,8 +6,8 @@ const config = require("../config/token");
 
 async function getAllUsers() {
   try {
-    let pool = await sql.connect(myDB.sqlConfig);
-    let users = await pool.request().query("SELECT * from SystemUsers");
+    let pool = await myDB.client.query(myDB.sqlConfig);
+    let users = await pool.request().query("SELECT * from system_users");
     return users.recordsets[0];
   } catch (error) {
     console.log(error);
@@ -16,8 +16,8 @@ async function getAllUsers() {
 
 async function getAllUsersProfile() {
   try {
-    let pool = await sql.connect(myDB.sqlConfig);
-    let userProfile = await pool.request().query("SELECT * from Users");
+    let pool = await myDB.client.query(myDB.sqlConfig);
+    let userProfile = await pool.request().query("SELECT * from users");
     return userProfile.recordsets[0];
   } catch (error) {
     console.log(error);
@@ -26,20 +26,23 @@ async function getAllUsersProfile() {
 
 async function getUserById(id) {
   try {
-    let pool = await sql.connect(myDB.sqlConfig);
+    let pool = await myDB.client.query(myDB.sqlConfig);
     let users = await pool
       .request()
       .input("id_parameter", sql.VarChar, id)
-      .query("SELECT * from SystemUsers WHERE id = @id_parameter");
+      .query("SELECT * from system_users WHERE id = @id_parameter");
     return users.recordsets[0];
   } catch (error) {
     console.log(error);
   }
 }
 
+// (`SELECT * FROM system_users WHERE id= $1;`,
+// [id]);
+
 async function getUserProfileById(id) {
   try {
-    let pool = await sql.connect(myDB.sqlConfig);
+    let pool = await myDB.client.query(myDB.sqlConfig);
     let user = await pool
       .request()
       .input("input_parameter", sql.VarChar, id)
@@ -50,10 +53,13 @@ async function getUserProfileById(id) {
     console.log(error);
   }
 }
+// (`SELECT * FROM users WHERE id= $1;`,
+// [id]);
+
 
 async function DeleteUserById(id) {
   try {
-    let pool = await sql.connect(myDB.sqlConfig);
+    let pool = await myDB.client.query(myDB.sqlConfig);
     let user = await pool
       .request()
       .input("id_parameter", sql.VarChar, id)
@@ -63,6 +69,9 @@ async function DeleteUserById(id) {
     console.log(error);
   }
 }
+
+// (`DELETE * FROM system_users WHERE id= $1;`,
+// [id]);
 
 async function createUser(req, res) {
   try {
@@ -120,7 +129,7 @@ async function createUser(req, res) {
 
 async function UpdateUserById(id, user) {
   try {
-    let pool = await sql.connect(myDB.sqlConfig);
+    let pool = await myDB.client.query(myDB.sqlConfig);
     let products = await pool
       .request()
       .input("id_parameter", sql.Int, id)
@@ -136,6 +145,9 @@ async function UpdateUserById(id, user) {
     console.log(error);
   }
 }
+// (`UPDATE system_users SET =(Firstname, Lastname, Email, UserPassword) VALUES ($1,$2,$3,$4);`,
+          // [user.firstname, user.lastname, user.mail, user.password],
+
 
 async function loginUser(req, res) {
   try {
@@ -193,6 +205,9 @@ async function UpdateUserProfileById(id, user) {
     console.log(error);
   }
 }
+
+// (firstname, lastname, mail, homeaddress,city,age,phonenumber,imgurl,type) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);`,
+// [user.firstname, user.lastname, user.mail, user.homeaddress, user.city, user.age, user.phonenumber, user.imgurl, user.type],
 
 module.exports = {
   getAll: getAllUsers,

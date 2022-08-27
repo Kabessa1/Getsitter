@@ -6,7 +6,10 @@ const jwtauth = require('../jwtauth');
 
 // Get all users
 router.get("/users", async (req, res) => {
+  console.log("getAll");
   jwtauth.verifyToken(req, res, async (req, res) => {
+  console.log("jwtauth.verifyToken");
+
     const users = await dbQuery.getAll();
     res.send(users);
   });

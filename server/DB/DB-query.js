@@ -6,6 +6,7 @@ const config = require("../config/token");
 
 async function getAllUsers() {
   try {
+    console.log("getAllUsers");
     let users = await myDB.client.query("SELECT * from system_users");
     // let users = await pool.request().query("SELECT * from system_users");
     console.log(users.data);
@@ -171,7 +172,7 @@ async function loginUser(req, res) {
         message: "Invalid Password!",
       });
     }
-    console.log(config);
+
     var token = jwt.sign({ id: user.id }, config.token);
 
     res.status(200).send({

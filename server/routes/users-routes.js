@@ -17,15 +17,12 @@ router.get("/users-profile", async (req, res) => {
     res.send("Some error on the server or DB");
     }
   });
-  // jwt
   
-  res.send(usersProfile);
 });
 
 // Get user by id
 router.get("/user-profile/:id", async (req, res) => {
   jwtauth.verifyToken(req, res, async (req, res) => {
-    console.log(req.params.id);
     const userProfile = await dbQuery.getUserProfileById(req.params.id);
 
     if (userProfile.length === 0) {

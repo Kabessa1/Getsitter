@@ -8,8 +8,6 @@ async function getAllUsers() {
   try {
     console.log("getAllUsers");
     let users = await myDB.client.query("SELECT * from system_users;");
-    // let users = await pool.request().query("SELECT * from system_users");
-    console.log(users.rows);
     return users.rows;
   } catch (error) {
     console.log(error);
@@ -19,7 +17,6 @@ async function getAllUsers() {
 async function getAllUsersProfile() {
   try {
     let userProfile = await myDB.client.query("SELECT * from users;");
-    console.log(userProfile.rows);
     return userProfile.rows;
   } catch (error) {
     console.log(error);
@@ -42,13 +39,12 @@ async function getUserById(id) {
 
 async function getUserProfileById(id) {
   try {
-    let pool = await myDB.client.query(myDB.sqlConfig);
-    let user = await pool
-      .request()
-      .input("input_parameter", sql.VarChar, id)
-      .query("SELECT * from Users WHERE id = @input_parameter");
-    console.log(user.recordsets[0]);
-    return user.recordsets[0];
+    let user = await myDB.client.query(
+      `SELECT * FROM users WHERE id= $1;`,
+      [id]
+    );
+    
+    return user.rows;
   } catch (error) {
     console.log(error);
   }

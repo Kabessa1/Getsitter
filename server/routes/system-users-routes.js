@@ -6,10 +6,7 @@ const jwtauth = require('../jwtauth');
 
 // Get all users
 router.get("/users", async (req, res) => {
-  console.log("getAll");
   jwtauth.verifyToken(req, res, async (req, res) => {
-  console.log("verifyToken");
-
     const users = await dbQuery.getAll();
     res.send(users);
   });
@@ -21,11 +18,12 @@ router.get("/user/:id", async (req, res) => {
     const user = await dbQuery.getUserById(req.params.id);
 
     if (user.length === 0) {
-    res.send("User do not exist");
+      res.send("User do not exist");
     } else if (user !== null && user !== undefined) {
-    res.send(user[0]);
+      delete user[0].userpassword
+      res.send(user[0]);
     } else {
-    res.send("Some error on the server or DB");
+      res.send("Some error on the server or DB");
     }
   });
 });

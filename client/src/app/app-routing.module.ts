@@ -24,6 +24,10 @@ const routes: Routes = [
     path: 'user-card',
     component: UserCardComponent,
   },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
   
   { path: 'profile', component: UserProfileComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full'},

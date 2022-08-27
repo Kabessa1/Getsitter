@@ -1,5 +1,5 @@
 .Thefooter {
-    padding-top: 20%;
+  padding-top: 60px;
   }
   body {
     line-height: 1.5;
@@ -10,11 +10,11 @@
     padding: 0;
     box-sizing: border-box;
   }
-  h3 {
+  /* h3 {
     font-size: 30px;
     text-align: center;
     font-family: Comic Sans MS, Comic Sans, cursive;
-  }
+  } */
   .container {
     max-width: 1170px;
     margin: auto;
@@ -27,7 +27,7 @@
     list-style: none;
   }
   .footer {
-    background-color: black;
+    background-color:#14c6bd;
     padding: 70px 0;
   }
   .footer-col {

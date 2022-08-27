@@ -10,9 +10,8 @@ import { RegisterComponent } from '../register/register.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
   constructor(private dialog: MatDialog) { }
-
+ 
 
 
   openLoginPopup(): void {

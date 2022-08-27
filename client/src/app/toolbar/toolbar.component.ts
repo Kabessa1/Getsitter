@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-
+  imageSrc = 'assets/images/logo.png'  
+  imageAlt = 'logo'
   constructor(private router : Router) {}
   goTopage(pageName:string):void {
   this.router.navigate([pageName]);
@@ -15,6 +17,9 @@ export class ToolbarComponent implements OnInit {
   goTo(pageName:string):void {
     this.router.navigate([pageName]);
     }
+    goTo2(pageName:string):void {
+      this.router.navigate([pageName]);
+      }
 
   ngOnInit(): void {
   }

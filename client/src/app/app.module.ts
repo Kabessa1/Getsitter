@@ -26,6 +26,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {JwtInterceptor } from './jwt.interceptor';
 import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {MatCardModule} from '@angular/material/card';
     MatMenuModule,
     MatTabsModule,
     MatTooltipModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},],
   bootstrap: [AppComponent],

@@ -28,19 +28,17 @@ async function getAllUsersProfile() {
 
 async function getUserById(id) {
   try {
-    let pool = await myDB.client.query(myDB.sqlConfig);
-    let users = await pool
-      .request()
-      .input("id_parameter", sql.VarChar, id)
-      .query("SELECT * from system_users WHERE id = @id_parameter");
-    return users.recordsets[0];
+
+    let user = await myDB.client.query(
+      `SELECT * FROM system_users WHERE id= $1;`,
+      [id]
+    );
+    
+    return user.rows;
   } catch (error) {
     console.log(error);
   }
 }
-
-// (`SELECT * FROM system_users WHERE id= $1;`,
-// [id]);
 
 async function getUserProfileById(id) {
   try {

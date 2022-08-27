@@ -6,7 +6,6 @@ const config = require("../config/token");
 
 async function getAllUsers() {
   try {
-    console.log("getAllUsers");
     let users = await myDB.client.query("SELECT * from system_users;");
     return users.rows;
   } catch (error) {
@@ -49,22 +48,19 @@ async function getUserProfileById(id) {
     console.log(error);
   }
 }
-// (`SELECT * FROM users WHERE id= $1;`,
-// [id]);
 
-
-async function DeleteUserById(id) {
-  try {
-    let pool = await myDB.client.query(myDB.sqlConfig);
-    let user = await pool
-      .request()
-      .input("id_parameter", sql.VarChar, id)
-      .query("Delete from SystemUsers WHERE id = @id_parameter");
-    return user.recordsets;
-  } catch (error) {
-    console.log(error);
-  }
-}
+// async function DeleteUserById(id) {
+//   try {
+//     let pool = await myDB.client.query(myDB.sqlConfig);
+//     let user = await pool
+//       .request()
+//       .input("id_parameter", sql.VarChar, id)
+//       .query("Delete from SystemUsers WHERE id = @id_parameter");
+//     return user.recordsets;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 // (`DELETE * FROM system_users WHERE id= $1;`,
 // [id]);
@@ -123,24 +119,24 @@ async function createUser(req, res) {
   }
 }
 
-async function UpdateUserById(id, user) {
-  try {
-    let pool = await myDB.client.query(myDB.sqlConfig);
-    let products = await pool
-      .request()
-      .input("id_parameter", sql.Int, id)
-      .input("Firstname_p", sql.VarChar, user.firstname)
-      .input("Lastname_p", sql.VarChar, user.lastname)
-      .input("Email_p", sql.VarChar, user.mail)
-      .input("UserPassword_p", sql.VarChar, user.password)
-      .query(
-        "UPDATE SystemUsers SET Firstname = @Firstname_p, Lastname = @Lastname_p, Email = @Email_p, UserPassword = @UserPassword_p WHERE id = @id_parameter"
-      );
-    return products.recordsets;
-  } catch (error) {
-    console.log(error);
-  }
-}
+// async function UpdateUserById(id, user) {
+//   try {
+//     let pool = await myDB.client.query(myDB.sqlConfig);
+//     let products = await pool
+//       .request()
+//       .input("id_parameter", sql.Int, id)
+//       .input("Firstname_p", sql.VarChar, user.firstname)
+//       .input("Lastname_p", sql.VarChar, user.lastname)
+//       .input("Email_p", sql.VarChar, user.mail)
+//       .input("UserPassword_p", sql.VarChar, user.password)
+//       .query(
+//         "UPDATE SystemUsers SET Firstname = @Firstname_p, Lastname = @Lastname_p, Email = @Email_p, UserPassword = @UserPassword_p WHERE id = @id_parameter"
+//       );
+//     return products.recordsets;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 // (`UPDATE system_users SET =(Firstname, Lastname, Email, UserPassword) VALUES ($1,$2,$3,$4);`,
           // [user.firstname, user.lastname, user.mail, user.password],
 

@@ -206,7 +206,7 @@ module.exports = {
   getAllUsersProfile,
   getUserById,
   getUserProfileById,
-  DeleteUserById,
+  // DeleteUserById,
   createUser,
   UpdateUserById,
   UpdateUserProfileById,

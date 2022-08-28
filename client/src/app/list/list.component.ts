@@ -8,6 +8,12 @@ import { interval, map, startWith, Subject, Subscription, switchMap, take, takeU
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnDestroy {
+//   const list = [{
+// ...user1
+//   },
+// {
+//   ...user2
+// }];
   // Method 1 - Menual Subscription and Unsubscribe
   // sub: Subscription;
   // constructor(private http: HttpClient) { 

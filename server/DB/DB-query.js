@@ -208,7 +208,7 @@ module.exports = {
   getUserProfileById,
   // DeleteUserById,
   createUser,
-  UpdateUserById,
-  UpdateUserProfileById,
+  // UpdateUserById,
+  // UpdateUserProfileById,
   loginUser,
 };

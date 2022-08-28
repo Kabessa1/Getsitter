@@ -2,9 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 interface UserCardData {
-  first: string;
-  last: string;
+  first_name: string;
+  last_name: string;
   age: number;
+  address: string;
+  city: string;
+  phone_number: number;
   image: string;
   about: string; 
 }

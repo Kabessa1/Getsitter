@@ -21,7 +21,7 @@ body {
     display: inline-block;
     height: 130px;
     width: 130px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     z-index: 1;
     position: relative;
   }
@@ -70,13 +70,18 @@ body {
     transform: scale(0.7);
   }
   
-  .my-profile .lastname {
+  /* .my-profile .lastname {
     display: block;
     font-size: 15px;
     color: #4e5052;
     text-transform: capitalize;
-  }
+  } */
   
+  .content{
+   color: black;
+   margin-bottom: 50px;
+  } 
+
   .my-profile .description {
     width: 100%;
     padding: 0;

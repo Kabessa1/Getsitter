@@ -1,32 +1,13 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-
-interface UserCardData {
-  first_name: string;
-  last_name: string;
-  age: number;
-  address: string;
-  city: string;
-  phone_number: number;
-  image: string;
-  about: string; 
-}
-
+import { Component, Input  } from '@angular/core';
+import { UserProfile } from '../types';
 
 @Component({
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.css']
 })
-export class UserCardComponent implements OnInit {
-  profile:any;
-
-  constructor(private http: HttpClient) { }
-
-  ngOnInit(): void {
-    this.http.get<any[]>('/api/users-profile').subscribe((data: any[])=>{this.profile=data[0]});
-    this.http.get<any>('/api/user-profile/3').subscribe((data: any)=>{this.profile=data});   
-  }
+export class UserCardComponent {
+  @Input() profile: UserProfile | undefined;
 }
 
 

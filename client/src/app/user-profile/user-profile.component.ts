@@ -1,19 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../storage.service';
-
-export interface UserProfile {
-  id: number,
-  firstname: string,
-  lastname: string,
-  email: string,
-  homeaddress: string,
-  type: string,
-  city: string,
-  age: string,
-  phonenumber: number,
-  imgurl: string
-}
+import { UserProfile } from '../types';
 
 @Component({
   selector: 'app-user-profile',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from '../storage.service';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 export class ToolbarComponent implements OnInit {
   imageSrc = 'assets/images/logo.png'  
   imageAlt = 'logo'
-  constructor(private router : Router) {}
+  isUserLogged$ = this.storageService.isLoggedIn$;
+  constructor(private router : Router, private storageService: StorageService) {}
   goTopage(pageName:string):void {
   this.router.navigate([pageName]);
   }

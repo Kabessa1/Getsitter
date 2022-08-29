@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { interval, map, startWith, Subject, Subscription, switchMap, take, takeUntil, takeWhile, tap, timer } from 'rxjs';
+import { StorageService } from '../storage.service';
 import { UserProfile } from '../types';
 
 @Component({
@@ -10,8 +11,16 @@ import { UserProfile } from '../types';
 })
 export class ListComponent implements OnDestroy {
   userProfiles: UserProfile[] = [];
-  constructor(private http: HttpClient) {
-    this.http.get<UserProfile[]>('/api/users-profile').pipe(take(1)).subscribe(profiles => this.userProfiles = profiles);
+  constructor(private http: HttpClient, private storageService: StorageService) {
+    this.http.get<UserProfile[]>('/api/users-profile')
+    .pipe(take(1))
+    .subscribe(profiles => {
+      profiles.forEach(profile => {
+        if (profile.type !== this.storageService.getUser().userType) {
+          this.userProfiles.push(profile);
+        }
+      })
+    });
   }
 //   userProfiles: UserProfile[] = [
 //     {

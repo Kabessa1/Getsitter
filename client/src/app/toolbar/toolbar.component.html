@@ -12,9 +12,12 @@
         </button> -->
       </div>
 
-      <div class="toolbar-middle">
+      <div class="toolbar-middle" *ngIf="isUserLogged$ | async">
           <button mat-raised-button color="basic"(click)="goTo('user-profile')">User-profile</button>
       </div>
+      <div class="toolbar-middle" *ngIf="isUserLogged$ | async">
+        <button mat-raised-button color="basic"(click)="goTo('list')">list</button>
+    </div>
     
       <div class="toolbar-right">
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">

@@ -7,9 +7,14 @@ const USER_KEY = 'auth-user';
 })
 export class StorageService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
+  private _userType$ = new BehaviorSubject<string>("");
 
   get isLoggedIn$(): Observable<boolean> {
     return this._isLoggedIn$.asObservable()
+  }
+
+  get userType$(): Observable<string> {
+    return this._userType$.asObservable()
   }
   
   constructor() {

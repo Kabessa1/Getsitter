@@ -8,5 +8,6 @@ export interface UserProfile {
     city: string,
     age: string,
     phonenumber: number,
-    imgurl: string
+    imgurl: string,
+    about: string
 }

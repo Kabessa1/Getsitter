@@ -44,13 +44,6 @@ router.put("/user-profile/:id", async (req, res) => {
     res.send("Some error on the server or DB");
    }
   });
-
-  const user = await dbQuery.UpdateUserProfileById(req.params.id, req.body);
-  if (user.length === 0 || user !== null || user !== undefined) {
-    res.send("User Updated");
-  } else {
-    res.send("Some error on the server or DB");
-  }
 });
 
 module.exports = router;

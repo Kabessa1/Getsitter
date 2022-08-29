@@ -26,7 +26,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private http: HttpClient, private storageService: StorageService) { }
 
   ngOnInit(): void {
-    this.http.get<UserProfile>(`/api/users-profile/${this.storageService.getUser().id}`)
+    this.http.get<UserProfile>(`/api/user-profile/${this.storageService.getUser().id}`)
     .subscribe((profile: UserProfile) => {
       this.profile = profile;
     });

@@ -166,7 +166,8 @@ async function loginUser(req, res) {
     const userType = await myDB.client.query(
       `SELECT type FROM users WHERE id= $1;`,
       [user.id]
-    ).rows[0].type;
+    );
+console.log(userType.rows[0]);
 
     var token = jwt.sign({ id: user.id }, config.token);
 

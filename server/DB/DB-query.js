@@ -167,13 +167,13 @@ async function loginUser(req, res) {
       `SELECT type FROM users WHERE id= $1;`,
       [user.id]
     );
-console.log(userType.rows[0]);
+console.log(userType.rows[0].type);
 
     var token = jwt.sign({ id: user.id }, config.token);
 
     res.status(200).send({
       id: user.id,
-      userType,
+      userType: userType.rows[0].type,
       accessToken: token,
     });
   } catch (error) {

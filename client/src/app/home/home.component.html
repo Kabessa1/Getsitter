@@ -34,9 +34,12 @@
     </div>
   </div>
   
-  <div class="home-buttons">
+  <div class="home-buttons" *ngIf="(isUserLogged$ | async) === false">
       <button mat-raised-button color="primary" (click)="openLoginPopup()">Login</button>
       <button mat-raised-button color="primary"(click)="openRegisterPopup()">Register</button>
+  </div>
+  <div class="home-buttons" *ngIf="isUserLogged$ | async">
+    <button mat-raised-button color="primary" (click)="logout()">LogOut</button>
   </div>
 </div>
 

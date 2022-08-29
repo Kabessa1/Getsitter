@@ -163,10 +163,16 @@ async function loginUser(req, res) {
       });
     }
 
+    const userType = await myDB.client.query(
+      `SELECT type FROM users WHERE id= $1;`,
+      [user.id]
+    );
+
     var token = jwt.sign({ id: user.id }, config.token);
 
     res.status(200).send({
       id: user.id,
+      userType,
       accessToken: token,
     });
   } catch (error) {
@@ -174,7 +180,6 @@ async function loginUser(req, res) {
   }
 }
 
-// TODO:: fileds names
 async function UpdateUserProfileById(id, user) {
   try {
     console.log(id);
@@ -191,9 +196,6 @@ async function UpdateUserProfileById(id, user) {
     console.log(error);
   }
 }
-
-// (firstname, lastname, mail, homeaddress,city,age,phonenumber,imgurl,type) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);`,
-// [user.firstname, user.lastname, user.mail, user.homeaddress, user.city, user.age, user.phonenumber, user.imgurl, user.type],
 
 module.exports = {
   getAll: getAllUsers,

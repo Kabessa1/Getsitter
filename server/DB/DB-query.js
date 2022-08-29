@@ -177,11 +177,12 @@ async function loginUser(req, res) {
 // TODO:: fileds names
 async function UpdateUserProfileById(id, user) {
   try {
+    console.log(id);
     console.log(user);
     const data = await myDB.client.query(
       `UPDATE "users" 
       SET "homeaddress" = $2, "city" = $3, "age" = $4, "phonenumber" = $5, "imgurl" = $6, "type" = $7, "about" = $8, 
-      WHERE id= $1;`,
+      WHERE "id" = $1;`,
       [id, user.homeaddress, user.city, user.age, user.phonenumber, user.imgurl, user.type, user.about]
     );
       console.log(data);

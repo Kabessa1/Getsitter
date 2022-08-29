@@ -177,22 +177,12 @@ async function loginUser(req, res) {
 // TODO:: fileds names
 async function UpdateUserProfileById(id, user) {
   try {
-    let pool = await sql.connect(myDB.sqlConfig);
-    let products = await pool
-      .request()
-      .input("id_parameter", sql.Int, id)
-      .input("Firstname_p", sql.VarChar, user.firstname)
-      .input("Lastname_p", sql.VarChar, user.lastname)
-      .input("Email_p", sql.VarChar, user.mail)
-      .input("HomeAddress_p", sql.VarChar, user.homeaddress)
-      .input("City_p", sql.VarChar, user.city)
-      .input("Age_p", sql.Int, user.zipcode)
-      .input("PhoneNumber_p", sql.VarChar, user.phonenumber)
-      .input("ImgUrl_p", sql.VarChar, user.imgurl)
-      .query(
-        "UPDATE Users SET Firstname = @Firstname_p, Lastname = @Lastname_p, Email = @Email_p, HomeAddress = @HomeAddress_p, City = @City_p, Age = @Age_p, PhoneNumber = @PhoneNumber_p, ImgUrl = @ImgUrl_p WHERE id = @id_parameter"
-      );
-    return products.recordsets;
+    const data = await myDB.client.query(
+      `UPDATE users SET homeaddress=$2, city=$3, age=$4, phonenumber=$5, imgurl=$6, type=$7, about=$8, WHERE id= $1;`,
+      [id, user.homeaddress, user.city, user.age, user.phonenumber, user.imgurl, user.type, user.about]
+    );
+      console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -209,6 +199,6 @@ module.exports = {
   // DeleteUserById,
   createUser,
   // UpdateUserById,
-  // UpdateUserProfileById,
+  UpdateUserProfileById,
   loginUser,
 };

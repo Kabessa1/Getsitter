@@ -36,7 +36,14 @@ router.get("/user-profile/:id", async (req, res) => {
 
 // update user by id
 router.put("/user-profile/:id", async (req, res) => {
-  // jwt
+  jwtauth.verifyToken(req, res, async (req, res) => {
+   try {
+    const userProfile = await dbQuery.UpdateUserProfileById(req.params.id, req.body);
+    res.send("User updated!");
+   } catch (error) {
+    res.send("Some error on the server or DB");
+   }
+  });
 
   const user = await dbQuery.UpdateUserProfileById(req.params.id, req.body);
   if (user.length === 0 || user !== null || user !== undefined) {

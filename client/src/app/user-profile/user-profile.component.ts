@@ -84,6 +84,6 @@ export class UserProfileComponent implements OnInit {
       phonenumber: this.phonenumber.value,
       imgurl: this.imgurl.value,
       about: this.about.value,
-  }).pipe(take(1)).subscribe();
+  }).pipe(take(1)).subscribe(()=>{this.http.get<UserProfile>(`/api/user-profile/${this.storageService.getUser().id}`)});
   }
 }

@@ -1,10 +1,9 @@
 import { Observable, observable, take, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormControl, } from '@angular/forms';
 import { StorageService } from '../storage.service';
 import { UserProfile } from '../types';
-
 
 @Component({
   selector: 'app-user-profile',
@@ -14,10 +13,13 @@ import { UserProfile } from '../types';
 
 export class UserProfileComponent implements OnInit {
   profile: UserProfile | undefined;
-  constructor(private http: HttpClient, private storageService: StorageService, private FormBuilder: FormBuilder) { }
+  constructor(private http: HttpClient, private storageService: StorageService, private FormBuilder: FormBuilder, private ref: ChangeDetectorRef) { }
     ngOnInit(): void {
       this.getuserprofile().subscribe((profile: UserProfile) => {
           this.profile = profile;
+          this.ref.detectChanges();
+          console.log(this.profile);
+          
         });
     // this.http.get<UserProfile>(`/api/user-profile/${this.storageService.getUser().id}`)
     // .pipe(take(1))

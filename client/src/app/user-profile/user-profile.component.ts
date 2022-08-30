@@ -1,4 +1,4 @@
-import { take } from 'rxjs';
+import { Observable, observable, take, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormControl, } from '@angular/forms';
@@ -15,14 +15,21 @@ import { UserProfile } from '../types';
 export class UserProfileComponent implements OnInit {
   profile: UserProfile | undefined;
   constructor(private http: HttpClient, private storageService: StorageService, private FormBuilder: FormBuilder) { }
-  ngOnInit(): void {
-    this.http.get<UserProfile>(`/api/user-profile/${this.storageService.getUser().id}`)
-    .pipe(take(1))
-    .subscribe((profile: UserProfile) => {
-      this.profile = profile;
-    });
+    ngOnInit(): void {
+      this.getuserprofile().subscribe((profile: UserProfile) => {
+          this.profile = profile;
+        });
+    // this.http.get<UserProfile>(`/api/user-profile/${this.storageService.getUser().id}`)
+    // .pipe(take(1))
+    // .subscribe((profile: UserProfile) => {
+    //   this.profile = profile;
+    // });
   }
-  
+  getuserprofile():Observable<UserProfile> {
+      return this.http.get<UserProfile>(`/api/user-profile/${this.storageService.getUser().id}`)
+      .pipe(take(1));
+  }
+
   userprofileForm = this.FormBuilder.group({
     id: [''],
     firstname: [''],
@@ -84,8 +91,7 @@ export class UserProfileComponent implements OnInit {
       phonenumber: this.phonenumber.value,
       imgurl: this.imgurl.value,
       about: this.about.value,
-  }).pipe(take(1)).subscribe(()=>{this.http.get<UserProfile>(`/api/user-profile/${this.storageService.getUser().id}`)});.pipe(take(1))
-  .subscribe((profile: UserProfile) => {
+  }).pipe(take(1),switchMap(() => this.getuserprofile())).subscribe((profile: UserProfile) => {
     this.profile = profile;
   });
   }

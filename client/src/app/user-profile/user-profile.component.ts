@@ -93,8 +93,10 @@ export class UserProfileComponent implements OnInit {
       phonenumber: this.phonenumber.value,
       imgurl: this.imgurl.value,
       about: this.about.value,
-  }).pipe(take(1),switchMap(() => this.getuserprofile())).subscribe((profile: UserProfile) => {
-    this.profile = profile;
+  }).pipe(take(1)).subscribe(() => {
+    this.profile = this.userprofileForm.value;
   });
   }
 }
+// }).pipe(take(1),switchMap(() => this.getuserprofile())).subscribe((profile: UserProfile) => {
+//   this.profile = profile;

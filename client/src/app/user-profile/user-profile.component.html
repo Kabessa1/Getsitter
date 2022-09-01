@@ -1,4 +1,4 @@
-<mat-tab-group mat-align-tabs="start"  [formGroup]="userprofileForm" class="form">
+<mat-tab-group mat-align-tabs="start">
     <mat-tab label="My profile">
            <!-- Profile picture card-->
            <div class="card mb-4 mb-xl-0" *ngIf="profile">
@@ -51,7 +51,7 @@
         </div>
       </mat-tab>
 
-    <mat-tab label="Edit my profile">  
+    <mat-tab label="Edit my profile" [formGroup]="userprofileForm" class="form">  
  <!-- Account details card-->
  <div class="card mb-4">
   <div class="card-header">Account Details</div>

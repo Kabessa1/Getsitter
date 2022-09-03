@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../storage.service';
+import { UserProfile } from '../types';
 
 
 @Component({
@@ -9,8 +10,9 @@ import { StorageService } from '../storage.service';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  imageSrc = 'assets/images/logo.png'  
-  imageAlt = 'logo'
+  // profile: UserProfile | undefined;
+  // imageSrc = 'assets/images/logo.png'  
+  // imageAlt = 'logo'
   isUserLogged$ = this.storageService.isLoggedIn$;
   constructor(private router : Router, private storageService: StorageService) {}
   goTopage(pageName:string):void {

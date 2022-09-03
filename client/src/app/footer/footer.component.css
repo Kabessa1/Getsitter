@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .Thefooter {
   padding-top: 60px;
   }
@@ -5,16 +10,7 @@
     line-height: 1.5;
     font-family: "Poppins", sans-serif;
   }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  /* h3 {
-    font-size: 30px;
-    text-align: center;
-    font-family: Comic Sans MS, Comic Sans, cursive;
-  } */
+
   .container {
     max-width: 1170px;
     margin: auto;
@@ -27,7 +23,7 @@
     list-style: none;
   }
   .footer {
-    background-color:#14c6bd;
+    background-color:radial-gradient(circle, rgba(174,221,238,1) 32%, rgba(233,148,175,1) 95%);
     padding: 70px 0;
   }
   .footer-col {
@@ -58,10 +54,10 @@
   .footer-col ul li a {
     font-size: 16px;
     text-transform: capitalize;
-    color: #ffffff;
+    color: #080000;
     text-decoration: none;
     font-weight: 300;
-    color: #bbbbbb;
+    color: #080000;
     display: block;
     transition: all 0.3s ease;
   }

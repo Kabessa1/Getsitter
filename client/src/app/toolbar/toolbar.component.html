@@ -1,30 +1,23 @@
 <mat-toolbar color="primary">
     <div class="toolbar-left">
       <div>
-        <img class="logoImg" [src]="imageSrc" [alt]="imageAlt" (click)="goTo2('home')"/>
+        <img class="logoImg" src="/assets/images/logo-without-text.jpg" alt="img1" (click)="goTo2('home')">
     </div>
-      <!-- <i class="material-icons">wc</i> -->
-        <!-- <span>GetSitter!</span> -->
-        <!-- <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        </button> -->
       </div>
 
       <div class="toolbar-middle" *ngIf="isUserLogged$ | async">
-          <button mat-raised-button color="basic"(click)="goTo('user-profile')">User-profile</button>
+          <button mat-raised-button color="basic"(click)="goTo('user-profile')"><mat-icon>person</mat-icon></button>
       </div>
       <div class="toolbar-middle" *ngIf="isUserLogged$ | async">
-        <button mat-raised-button color="basic"(click)="goTo('list')">list</button>
+        <button mat-raised-button color="basic"(click)="goTo('list')">let's go</button>
     </div>
     
-      <div class="toolbar-right">
+      <!-- <div class="toolbar-right">
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
          <button mat-raised-button color="primary"(click)="goTopage('register')">Register</button>
         </mat-menu>
-      </div>
+      </div> -->
 </mat-toolbar>

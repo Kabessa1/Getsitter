@@ -1,27 +1,18 @@
-<!-- <div class="grid-container"> -->
-  <!-- <div class="header">
-    <h2>Welcome!</h2>
-  </div> -->
-<!--   
-  <div class="left" style="background-color:#aaa;">Column</div>
-  <div class="middle" style="background-color:#bbb;">Column</div>  
-  <div class="right" style="background-color:#ccc;">Column</div>
-</div> -->
 <div class="home-body">
-  <div className="aboutdv"> 
-    <div className="main">
+<div class="aboutdv"> 
+    <div class="main">
       <span>A</span>
       <span>B</span>
       <span>O</span>
       <span>U</span>
       <span>T</span>
-      <span className="letter"></span>
+      <span class="letter"></span>
       <span>U</span>
       <span>S</span>
     </div>
     <br />
     <br />
-    <div className="pdv">
+    <div class="pdv">
       <p>
         Want to go out and have no one to look after the kids?
         <br />
@@ -33,14 +24,31 @@
       </p>
     </div>
   </div>
-  
+
+<div class="main-component ">
+  <div class="up-right-component">
+    <img class="img1" src="/assets/images/logo-final.jpg" alt="img1">
+  </div>
+  <div class="up-left-component">
+    <img class="img2" src="/assets/images/home-img-2.png" alt="img2">
+  </div>
+  <div class="middle-right-component">
+    <img class="img3" src="/assets/images/home-img-3.png" alt="img3">
+  </div>
+  <div class="-middle-join-us-component">
+    <img class="img4" src="/assets/images/home-img-4.png" alt="img4">
+  </div>
+</div> 
+<div class="buttons">
   <div class="home-buttons" *ngIf="(isUserLogged$ | async) === false">
-      <button mat-raised-button color="primary" (click)="openLoginPopup()">Login</button>
-      <button mat-raised-button color="primary"(click)="openRegisterPopup()">Register</button>
-  </div>
-  <div class="home-buttons" *ngIf="isUserLogged$ | async">
-    <button mat-raised-button color="primary" (click)="logout()">LogOut</button>
-  </div>
+    <button mat-raised-button color="basic" (click)="openLoginPopup()">Login</button>
+    <button mat-raised-button color="basic"(click)="openRegisterPopup()">Register</button>
+</div>
+<div class="home-buttons" *ngIf="isUserLogged$ | async">
+  <button mat-raised-button color="basic" (click)="logout()">LogOut</button>
+</div>
+</div>
 </div>
 
 
+  

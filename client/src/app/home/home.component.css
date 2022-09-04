@@ -1,182 +1,123 @@
-   * {
-    margin:0;
-    padding:0;
-
-   }
-   img {
-    border-radius: 25px 25px 25px 25px;
-   }
-
-  .home-body {
-    display: block;
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-bottom: 30px;
-  }
-
-.img1{
-  width: 60%;
+* {
+  margin: 0;
+  padding: 0;
+}
+img {
+  border-radius: 25px 25px 25px 25px;
 }
 
-.img2{
+.home-body {
+  display: block;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+.img1 {
+  height: 300px;
+  width: 60%;
+  margin-left: 280px;
+}
+
+.img2 {
+  margin-top: 40px;
+  width: 30%;
+  margin-left: 800px;
+}
+
+.img3 {
   width: 40%;
-  position: relative;
-  left: 550px;
+  margin-top: 30px;
+  margin-left: 300px;
 }
 
-.img3{
-  width: 60%;
-  position: relative;
-  right: 100px;
+.img4 {
+  height: 300px;
+  width: 70%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 220px;
 }
 
-.img4{
-  width: 100%;
+.aboutdv {
+  width: 50%;
+  margin-left: 350px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Quicksand", sans-serif;
+  font-size: 25px;
+  display: block;
+  color: transparent;
+  background: #666666;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+}
+span {
+  margin: 0 15px;
+  line-height: 0.7;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+  animation: span 3s ease-in infinite alternate;
 }
 
-  .aboutdv {
-    width: 80%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Quicksand", sans-serif;
-    font-size: 20px;
-    display: block;
-    color: transparent;
-    background: #666666;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  @media (max-width: 600px) {
+    transform: scale(0.65);
   }
-  span {
+}
+.letter {
+  display: inline-flex;
+  height: 30px;
+  width: 27px;
+  /* border: 2.5px solid #FF1EAD; */
+  border: 2.35px solid black;
+  border-radius: 14px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.75), inset 0 0 2px rgba(0, 0, 0, 0.45);
+
+  animation: letter 3s ease-in-out infinite alternate;
+}
+@keyframes span {
+  0%,
+  30% {
     margin: 0 15px;
-    line-height: 0.7;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
-    animation: span 3s ease-in infinite alternate;
   }
-  .main {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  
-    @media (max-width: 600px) {
-      transform: scale(0.65);
-    }
+  70%,
+  100% {
+    margin: 0 5px;
   }
-  .letter {
-    display: inline-flex;
-    height: 30px;
+}
+@keyframes letter {
+  0%,
+  30% {
     width: 27px;
-    /* border: 2.5px solid #FF1EAD; */
-    border: 2.35px solid black;
-    border-radius: 14px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75), inset 0 0 2px rgba(0, 0, 0, 0.45);
-  
-    animation: letter 3s ease-in-out infinite alternate;
   }
-  @keyframes span {
-    0%,
-    30% {
-      margin: 0 15px;
-    }
-    70%,
-    100% {
-      margin: 0 5px;
-    }
+  70%,
+  100% {
+    width: 30vw;
   }
-  @keyframes letter {
-    0%,
-    30% {
-      width: 27px;
-    }
-    70%,
-    100% {
-      width: 30vw;
-    }
-  }
-  
-  p {
-    font-family: Comic Sans MS, Comic Sans, cursive;
-  }
-
-  
-.home-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 35%;
-    margin: auto;
-    padding:auto;
 }
 
-  /* Style the header */
-  /* .header {
-    grid-area: header;
-    background-color: #f1f1f1;
-    background-image: url('/src/app/images/logo.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    padding: 30px;
-    text-align: center;
-    font-size: 35px;
-  } */
-  
+p {
+  font-family: Comic Sans MS, Comic Sans, cursive;
+}
 
-  
-  /* The grid container */
-  /* .grid-container {
-    display: grid;
-    grid-template-areas: 
-      'header header header header header header' 
-      'left left middle middle right right';
-      margin-bottom: auto; */
-    /* grid-column-gap: 10px; - if you want gap between the columns */
-  /* } 
-  
-  .left,
-  .middle,
-  .right {
-    padding: 10px;
-    height: 300px; Should be removed. Only for demonstration
-  } */
-  
-  /* Style the left column */
-  /* .left {
-    grid-area: left;
-  } */
-  
-  /* Style the middle column */
-  /* .middle {
-    grid-area: middle;
-  } */
-  
-  /* Style the right column */
-  /* .right {
-    grid-area: right;
-  } */
-  
-  
-  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-  /* @media (max-width: 600px) {
-    .grid-container  {
-      grid-template-areas: 
-        'header header header header header header' 
-        'left left left left left left' 
-        'middle middle middle middle middle middle' 
-        'right right right right right right';
-    } */
-  /* }
-  .info {
-    padding: 50px;
-    margin: 40px;
-    background-color:rgb(233, 218, 193);
-  } */
+.home-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 35%;
+  margin: auto;
+  padding: auto;
+}
 
-  /* למה לא עובד?
-  https://codepen.io/P1N2O/pen/pyBNzX */
-
- 
-  
+.mat-raised-button {
+  height: 50px;
+  width: 100px;
+}

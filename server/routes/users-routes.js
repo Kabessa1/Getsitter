@@ -41,7 +41,7 @@ router.put("/user-profile/:id", async (req, res) => {
         req.params.id,
         req.body
       );
-      res.send("{User updated!}");
+      res.send(JSON.stringify("User updated!"));
     } catch (error) {
       res.send("Some error on the server or DB");
     }

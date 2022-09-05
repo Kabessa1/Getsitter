@@ -1,117 +1,148 @@
 <mat-tab-group mat-align-tabs="start">
-<mat-tab label="My profile">
-<!-- Profile picture card-->
-<div class="card mb-4 mb-xl-0" *ngIf="profile">
-<div class="card-header">Profile Picture</div>
-<div class="card-body text-center">
-<!-- Profile picture image-->
-<img class="img-account-profile rounded-circle mb-2" src="{{profile.imgurl}}" alt="">
-<div class="card-body">
-<form>
-    <!-- Form Row-->
-    <div class="row gx-3 mb-3">
-        <label class="small mb-1" for="inputFirstname">First Name:</label>
-        <label class="small mb-1" for="inputFirstname"><br>{{profile.firstname}}</label>
-    <div>
-        <label class="small mb-1" for="inputLastname">last Name</label>
-        <label class="small mb-1" for="inputLastname"><br>{{profile.lastname}}</label>
+  <mat-tab label="My profile">
+    <!-- Profile picture card-->
+    <div class="card mb-4 mb-xl-0" *ngIf="profile">
+      <div class="card-header">Profile Picture</div>
+      <div class="card-body text-center">
+        <!-- Profile picture image-->
+        <img
+          class="img-account-profile rounded-circle mb-2"
+          src="{{ (profile | async)?.imgurl }}"
+          alt=""
+        />
+        <div class="card-body">
+          <form>
+            <!-- Form Row-->
+            <div class="row gx-3 mb-3">
+              <label class="small mb-1" for="inputFirstname">First Name:</label>
+              <label class="small mb-1" for="inputFirstname"
+                ><br />{{ (profile | async)?.firstname }}</label
+              >
+              <div>
+                <label class="small mb-1" for="inputLastname">last Name</label>
+                <label class="small mb-1" for="inputLastname"
+                  ><br />{{ (profile | async)?.lastname }}</label
+                >
+              </div>
+            </div>
+            <!-- Form Row        -->
+            <div class="row gx-3 mb-3">
+              <!-- Form Group (City)-->
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputLocation">City</label>
+                <label class="small mb-1" for="inputLocation"
+                  ><br />{{ (profile | async)?.city }}</label
+                >
+              </div>
+            </div>
+            <!-- Form Group (address)-->
+            <div class="mb-3">
+              <label class="small mb-1" for="inputEmailAddress">Address</label>
+              <label class="small mb-1" for="inputEmailAddress"
+                ><br />{{ (profile | async)?.homeaddress }}</label
+              >
+            </div>
+            <!-- Form Row-->
+            <div class="row gx-3 mb-3">
+              <!-- Form Group (phone number)-->
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputPhone">Phone number</label>
+                <label class="small mb-1" for="inputPhone"
+                  ><br />{{ (profile | async)?.phonenumber }}</label
+                >
+              </div>
+
+              <div>
+                <label class="small mb-1" for="inputAge">Age</label>
+                <label class="small mb-1" for="inputAge"
+                  ><br />{{ (profile | async)?.age }}</label
+                >
+              </div>
+              <!-- Form Group (Age)-->
+              <div class="col-md-6">
+                <label class="small mb-1" for="inputAge">About</label>
+                <label class="small mb-1" for="inputAge"
+                  ><br />{{ (profile | async)?.about }}</label
+                >
+                <div>
+                  <label class="small mb-1" for="inputAge">type</label>
+                  <label class="small mb-1" for="inputAge"
+                    ><br />{{ (profile | async)?.type }}</label
+                  >
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </mat-tab>
+
+  <mat-tab label="Edit my profile">
+    <!-- Account details card-->
+    <div class="card mb-4">
+      <div class="card-header">Account Details</div>
+      <div class="card-body">
+        <form [formGroup]="userprofileForm" class="form">
+          <!-- Form Row-->
+          <div class="row gx-3 mb-3">
+            <!-- <button class="btn btn-primary" type="button">Upload new image</button> -->
+            <div class="col-md-6">
+              <label class="small mb-1" for="about">About Me</label>
+              <input formControlName="about" placeholder="Tell me about you" />
+            </div>
+          </div>
+          <!-- Form Row        -->
+          <div class="row gx-3 mb-3">
+            <!-- Form Group (City)-->
+            <div class="col-md-6">
+              <label class="small mb-1" for="inputLocation">City</label>
+              <input formControlName="city" placeholder="Enter your city" />
+            </div>
+          </div>
+          <!-- Form Group (address)-->
+          <div class="mb-3">
+            <label class="small mb-1" for="inputAddress">Address</label>
+            <input
+              formControlName="homeaddress"
+              placeholder="Enter your address"
+            />
+          </div>
+          <!-- Form Row-->
+          <div class="row gx-3 mb-3">
+            <!-- Form Group (phone number)-->
+            <div class="col-md-6">
+              <label class="small mb-1" for="inputPhone">Phone number</label>
+              <input
+                formControlName="phonenumber"
+                placeholder="Enter your Phonenumber"
+              />
+            </div>
+            <!-- Form Group (Age)-->
+            <div class="col-md-6">
+              <label class="small mb-1" for="inputBirthday">Age</label>
+              <input
+                formControlName="age"
+                placeholder="Enter how old are you"
+              />
+            </div>
+            <div class="col-md-6">
+              <label class="small mb-1" for="inputtype">Type</label>
+              <input formControlName="type" placeholder="what is your type?" />
+            </div>
+          </div>
+          <!-- Save changes button-->
+          <button
+            class="btn btn-primary"
+            type="button"
+            (click)="updateMyProfile()"
+          >
+            Save changes
+          </button>
+        </form>
+      </div>
     </div>
-<!-- Form Row        -->
-<div class="row gx-3 mb-3">
-
-<!-- Form Group (City)-->
-<div class="col-md-6">
-<label class="small mb-1" for="inputLocation">City</label>
-<label class="small mb-1" for="inputLocation"><br>{{profile.city}}</label>
-</div>
-</div>
-<!-- Form Group (address)-->
-<div class="mb-3">
-<label class="small mb-1" for="inputEmailAddress">Address</label>
-<label class="small mb-1" for="inputEmailAddress"><br>{{profile.homeaddress}}</label>
-</div>
-<!-- Form Row-->
-<div class="row gx-3 mb-3">
-<!-- Form Group (phone number)-->
-<div class="col-md-6">
-<label class="small mb-1" for="inputPhone">Phone number</label>
-<label class="small mb-1" for="inputPhone"><br>{{profile.phonenumber}}</label>
-</div>
-
-<div>
-    <label class="small mb-1" for="inputAge">Age</label>
-    <label class="small mb-1" for="inputAge"><br>{{profile.age}}</label>
-</div>
-<!-- Form Group (Age)-->
-<div class="col-md-6">
-<label class="small mb-1" for="inputAge">About</label>
-<label class="small mb-1" for="inputAge"><br>{{profile.about}}</label>
-<div>
-<label class="small mb-1" for="inputAge">type</label>
-<label class="small mb-1" for="inputAge"><br>{{profile.type}}</label>
-</div>
-</div>
-</div>
-</form>
-</div>
-</div>
-
-</div>
-</mat-tab>
-
-<mat-tab label="Edit my profile">  
-<!-- Account details card-->
-<div class="card mb-4">
-<div class="card-header">Account Details</div>
-<div class="card-body">
-<form [formGroup]="userprofileForm" class="form">
-<!-- Form Row-->
-<div class="row gx-3 mb-3">
-<!-- <button class="btn btn-primary" type="button">Upload new image</button> -->
-<div class="col-md-6">
-
-<label class="small mb-1" for="about">About Me</label>
-<input formControlName="about" placeholder="Tell me about you">
-</div>
-</div>
-<!-- Form Row        -->
-<div class="row gx-3 mb-3">
-
-<!-- Form Group (City)-->
-<div class="col-md-6">
-<label class="small mb-1" for="inputLocation">City</label>
-<input formControlName="city" placeholder="Enter your city">
-</div>
-</div>
-<!-- Form Group (address)-->
-<div class="mb-3">
-<label class="small mb-1" for="inputAddress">Address</label>
-<input formControlName="homeaddress" placeholder="Enter your address">
-</div>
-<!-- Form Row-->
-<div class="row gx-3 mb-3">
-<!-- Form Group (phone number)-->
-<div class="col-md-6">
-<label class="small mb-1" for="inputPhone">Phone number</label>
-<input formControlName="phonenumber" placeholder="Enter your Phonenumber">
-</div>
-<!-- Form Group (Age)-->
-<div class="col-md-6">
-<label class="small mb-1" for="inputBirthday">Age</label>
-<input formControlName="age" placeholder="Enter how old are you">
-</div>
-<div class="col-md-6">
-    <label class="small mb-1" for="inputtype">Type</label>
-    <input formControlName="type" placeholder="what is your type?">
-    </div>
-</div>
-<!-- Save changes button-->
-<button class="btn btn-primary" type="button" (click)="updateMyProfile()">Save changes</button>
-</form>
-</div>
-</div>
-</mat-tab>
+  </mat-tab>
 </mat-tab-group>
 
 <!-- ============================================= -->

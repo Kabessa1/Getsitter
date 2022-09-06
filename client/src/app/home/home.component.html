@@ -48,7 +48,7 @@
         Register
       </button>
     </div>
-    <div class="home-buttons" *ngIf="isUserLogged$ | async">
+    <div class="logout-button" *ngIf="isUserLogged$ | async">
       <button mat-raised-button color="basic" (click)="logout()">LogOut</button>
     </div>
   </div>

@@ -14,7 +14,6 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import {MatIconModule} from '@angular/material/icon';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { UserCardComponent } from './user-card/user-card.component';
@@ -27,6 +26,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {JwtInterceptor } from './jwt.interceptor';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -52,14 +53,15 @@ import {MatDividerModule} from '@angular/material/divider';
     ReactiveFormsModule,
     FormsModule,
     MatIconModule,
-    MatFormFieldModule,
     MatRadioModule,
     MatInputModule,
     MatMenuModule,
     MatTabsModule,
     MatTooltipModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},],
   bootstrap: [AppComponent],

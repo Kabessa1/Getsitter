@@ -117,6 +117,9 @@ p {
   margin: auto;
   padding: auto;
 }
+.logout-button{
+  margin-left: 700px;
+}
 
 .mat-raised-button {
   height: 50px;

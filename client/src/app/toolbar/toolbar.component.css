@@ -1,5 +1,6 @@
 .mat-toolbar.mat-primary {
-    background:radial-gradient(circle, rgba(174,221,238,1) 32%, rgba(233,148,175,1) 95%);
+    background: rgb(250,215,223);
+    background: radial-gradient(circle, rgba(230,247,246,1) 32%, rgba(253,228,233,1) 95%); 
     color: #fff;
     display: flex;
     justify-content: space-between;

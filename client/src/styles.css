@@ -2,12 +2,9 @@
 
 html, body { height: 100%; }
 body {
-  background: rgb(174,221,238);
-background: radial-gradient(circle, rgba(174,221,238,1) 32%, rgba(233,148,175,1) 95%);
-  /* background-image: url("/assets/images/giphy-1.gif") !important;
-  background-position: top;
-  background-attachment: fixed;
-  color: white; */
+ background: rgb(250,215,223);
+background: radial-gradient(circle, rgba(230,247,246,1) 32%, rgba(253,228,233,1) 95%); 
+
 }
 
 /* { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
